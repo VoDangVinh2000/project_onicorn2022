@@ -3,6 +3,7 @@
 use App\Http\Controllers\Menus\MenusController;
 use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +24,7 @@ Route::get('/admin-dashboard', [NewsController::class, 'index']);
 Route::get('/admin-footer', [FooterController::class, 'index']);
 
 //Menus
-Route::get('/admin-menus',[MenusController::class,'index']);
-Route::post('/admin-menus-add',[MenusController::class,'store'])->name('add_menus');
+Route::get('/admin-menus', [MenusController::class, 'index']);
+Route::post('/admin-menus-add', [MenusController::class, 'store'])->name('add_menus');
+Route::post('/admin-menus-update/{id}', [MenusController::class, 'update'])->name('update_menus');
+Route::get('/admin-menus-destroy/{id}', [MenusController::class, 'destroy'])->name('destroy_menus');
