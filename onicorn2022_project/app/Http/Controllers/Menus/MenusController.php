@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menus\Menus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
 use Illuminate\View\View;
 
 class MenusController extends Controller
@@ -44,11 +45,16 @@ class MenusController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $all_validate = FacadesValidator::make($request->all(), [
             'name' => 'required|max:200',
             'link' => 'max:100|nullable',
             'icon_fileUpload' => 'max:100',
         ]);
+        if ($all_validate->fails()) {
+            toastr()->error('Failed');
+            return back()->withErrors($all_validate)->withInput();
+        }
+
         $name = $request->input('name');
         $link = $request->input('link');
         $icon = "";
@@ -71,6 +77,7 @@ class MenusController extends Controller
             $icon_fileUpload->move(public_path('uploads'), $icon);
         }
         toastr()->success('Menu is added');
+
         return back()->with('message', 'Menu is added');
     }
 
@@ -91,9 +98,14 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         //
+        $menu = Menus::find($id);
+        return response()->json([
+            'data' => $menu,
+        ]);
+
     }
 
     /**

@@ -5,8 +5,14 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="header-title">All menus</h3>
-             
-                <hr>
+                {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" title="Thêm">
+                    <i class="fa fa-address-card"></i>  
+                </button> --}}
+                <button type="button" class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#menu_form_add" title="Thêm">Add
+                </button>
+                <!-- Modal Form Add Start-->
+                @include('Menus.modal.form_add')
+	            <!-- Modal Form Add End-->
                 <form action="">
                     <table id="datatable" class="table table-bordered">
                         <thead>
@@ -33,17 +39,13 @@
                                     <td>{{ $data->updated_at }}</td> --}}
                                     <td>
                                         <form action="#" method="POST">
-                                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" title="Thêm" href="{{route('add_menus',$data->id)}}"  >
-                                                <i class="fa fa-address-card"></i>
-                                            </a>
+                                        
                                             {{-- {{ route('add_menus',$data->id) }} --}}
-                                            <a target="blank" class="btn btn-info" id="btnShow" href="#" title="Show">
-                                                <i class="fa fa-info-circle"></i>
-                                            </a>
-                                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Add</button> --}}
-                                            <a target="blank" class="btn btn-primary" href="#" id="btnUpdate" title="Chỉnh sửa">
+                                           
+                                            <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#menu_form_edit" title="Edit">
                                                 <i class="fa fa-pencil-square-o"></i>
-                                            </a>
+                                            </button>
+                                            {{-- @include('Menus.modal.form_edit') --}}
                                             @csrf
                                             @method('DELETE')
                                              <a target="blank" class="btn btn-danger" id="btnDelete" href="#" title="Xóa">
@@ -65,16 +67,3 @@
     <!--end form Menu Structure !-->
 </div>
 <!-- end list menus !-->
-
-<script>
-    error=false
-    
-    function validate()
-    {
-        if(document.list.name.value !='' && document.custForm.email.value !='' && document.list.address.value !='')
-            document.list.btnsave.disabled=false
-        else
-            document.list.btnsave.disabled=true
-    }
-    </script>
-
