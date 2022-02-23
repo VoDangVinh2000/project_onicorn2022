@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Menus extends Model
 {
     use HasFactory;
-    protected $table = "header";
+    protected $table = "la_menus";
     protected $primaryKey = "id";
     public $timestamps = false;
     protected $fillable = [
