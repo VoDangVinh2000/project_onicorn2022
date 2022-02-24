@@ -19,8 +19,8 @@ class Banner extends Model
         'enabled',
         
     ];
-    // public function page()
-    // {
-    //     return $this->belongsTo('App\Models\Page\Page','page_id','id');
-    // }
+     public function page()
+     {
+         return $this->belongsTo('App\Models\Page\Page','page_id','id');
+     }
 }

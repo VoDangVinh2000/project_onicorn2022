@@ -31,4 +31,9 @@ Route::post('/admin-menus-add',[MenusController::class,'store'])->name('add_menu
 
 //Banners
 Route::resource('/admin-banner','App\Http\Controllers\Banner\BannerController');
-//Route::get('/admin-banner-add',[BannerController::class,'store']);
+
+
+//Page
+
+Route::resource('page','App\Http\Controllers\Page\PageController');
+Route::get('show-head/{id}',[PageController::class,'showHead']);
