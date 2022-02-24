@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Menus\MenusController;
 use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\Banner\BannerController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//News
 Route::get('/admin-dashboard', [NewsController::class, 'index']);
 
 //Footer
@@ -25,3 +27,8 @@ Route::get('/admin-footer', [FooterController::class, 'index']);
 //Menus
 Route::get('/admin-menus',[MenusController::class,'index']);
 Route::post('/admin-menus-add',[MenusController::class,'store'])->name('add_menus');
+
+
+//Banners
+Route::resource('/admin-banner','App\Http\Controllers\Banner\BannerController');
+//Route::get('/admin-banner-add',[BannerController::class,'store']);
