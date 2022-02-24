@@ -87,9 +87,14 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+        // $list = $request->all();
+        // Menus::create($list);
+        // $menu = Menus::orderBy('di', 'DESC')->first();
+        // return redirect("admin-menus?id=$menu->id")->back()->with('success', 'menu successfully');
+
     }
 
     /**
@@ -129,11 +134,18 @@ class MenusController extends Controller
     public function destroy($id)
     {
         //
+        $menus = Menus::where('id', $id)->first();
+        if ($menus != null) {
+            $menus->delete();
+            toastr()->success('Successfully deleted!!');
+            return back();
+        }
+
     }
 
     public function compose(View $view)
     {
         $list = Menus::all();
-        $view->with('Menus.index', $list);
+        $view->with('index', $list);
     }
 }

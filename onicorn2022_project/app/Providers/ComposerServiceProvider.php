@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Menus\MenusController;
-
-
 use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
