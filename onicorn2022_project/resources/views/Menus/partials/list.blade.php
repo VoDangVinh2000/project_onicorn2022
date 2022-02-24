@@ -34,13 +34,13 @@
                                     <td>{{ $data->enabled }}</td>
                                     {{-- <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->updated_at }}</td> --}}
-                                    <td>
-                                        <form action="{{ route('destroy_menus',$data->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a type="button" class="btn btn-warning m-2"  title="Show">
+                                    <td>  <a type="button" class="btn btn-warning m-2"  title="Show">
                                                 <i class="fa fa-th"></i>
                                             </a>
+                                        <form action="{{ route('destroy_menus',['id'=>$data->id]) }} " method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                          
                                              <button type="submit" class="btn btn-danger"  title="Xóa">
                                                 <i class="fa fa-times-circle"></i>
                                             </button>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Menus\MenuItemsController;
 use App\Http\Controllers\Menus\MenusController;
 use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +29,3 @@ Route::get('/admin-menus', [MenusController::class, 'index'])->name('admin_menus
 Route::post('/admin-menus-add', [MenusController::class, 'store'])->name('add_menus');
 Route::post('/admin-menus-update/{id}', [MenusController::class, 'update'])->name('update_menus');
 Route::delete('/admin-menus-destroy/{id}', [MenusController::class, 'destroy'])->name('destroy_menus');
-
-//Menu_items
-Route::get('/admin-menu-items', [MenuItemsController::class, 'index']);
