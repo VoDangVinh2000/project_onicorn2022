@@ -6,9 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Menus\Menus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\View\View;
 
 class MenusController extends Controller
 {
+
+    // function list() {
+    //     $list = Menus::all();
+    //     return view('Menus.index', compact('list', $list));
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,8 @@ class MenusController extends Controller
      */
     public function index()
     {
-        return view('Menus.index');
+        $list = Menus::all();
+        return view('Menus.index', compact('list', $list));
     }
 
     /**
@@ -37,16 +45,21 @@ class MenusController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $all_validate = FacadesValidator::make($request->all(), [
             'name' => 'required|max:200',
             'link' => 'max:100|nullable',
-            'icon_fileUpload' => 'max:100'
+            'icon_fileUpload' => 'max:100',
         ]);
+        if ($all_validate->fails()) {
+            toastr()->error('Failed');
+            return back()->withErrors($all_validate)->withInput();
+        }
+
         $name = $request->input('name');
         $link = $request->input('link');
         $icon = "";
         $icon_fileUpload = "";
-        if($request->hasFile('icon_fileUpload')){
+        if ($request->hasFile('icon_fileUpload')) {
             $icon_fileUpload = $request->file('icon_fileUpload');
             $icon_fileName = $icon_fileUpload->getClientOriginalName();
             $icon = time() . "-" . $icon_fileName;
@@ -60,11 +73,12 @@ class MenusController extends Controller
             'enabled' => $enabled,
         ]);
         //Hãy chỉnh cấu hình ví dụ để folder ở chỗ khác thì sẽ tự dộng move theo đường dẫn
-        if($request->hasFile('icon_fileUpload')){
-            $icon_fileUpload->move(public_path('uploads'),$icon);
+        if ($request->hasFile('icon_fileUpload')) {
+            $icon_fileUpload->move(public_path('uploads'), $icon);
         }
         toastr()->success('Menu is added');
-        return back()->with('message','Menu is added');
+
+        return back()->with('message', 'Menu is added');
     }
 
     /**
@@ -73,9 +87,14 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+        // $list = $request->all();
+        // Menus::create($list);
+        // $menu = Menus::orderBy('di', 'DESC')->first();
+        // return redirect("admin-menus?id=$menu->id")->back()->with('success', 'menu successfully');
+
     }
 
     /**
@@ -84,9 +103,14 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         //
+        $menu = Menus::find($id);
+        return response()->json([
+            'data' => $menu,
+        ]);
+
     }
 
     /**
@@ -110,5 +134,18 @@ class MenusController extends Controller
     public function destroy($id)
     {
         //
+        $menus = Menus::where('id', $id)->first();
+        if ($menus != null) {
+            $menus->delete();
+            toastr()->success('Successfully deleted!!');
+            return back();
+        }
+
+    }
+
+    public function compose(View $view)
+    {
+        $list = Menus::all();
+        $view->with('index', $list);
     }
 }

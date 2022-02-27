@@ -40,3 +40,8 @@ Route::get('/amdin-page-add',[PageController::class,'add_page_view'])->name('adm
 Route::post('/amdin-page-add',[PageController::class,'add_page'])->name('admin_page_add');
     //save data - pages
 
+
+Route::get('/admin-menus', [MenusController::class, 'index'])->name('admin_menus');
+Route::post('/admin-menus-add', [MenusController::class, 'store'])->name('add_menus');
+Route::post('/admin-menus-update/{id}', [MenusController::class, 'update'])->name('update_menus');
+Route::delete('/admin-menus-destroy/{id}', [MenusController::class, 'destroy'])->name('destroy_menus');

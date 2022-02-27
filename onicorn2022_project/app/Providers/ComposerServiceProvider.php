@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Page\PageController;
+use App\Http\Controllers\Menus\MenusController;
 use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
@@ -26,6 +27,10 @@ class ComposerServiceProvider extends ServiceProvider
     {
         view()->composer(['Page.partials.tabs_banner','Page.partials.edit'],
             PageController::class
+        );
+
+        view()->composer(['Menus.index', 'Menus.index.partials'],
+         MenusController::class
         );
     }
 }

@@ -1,65 +1,61 @@
+{{-- khang --}}
 <!-- List menus !-->
 <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-12 mb-3">
         <div class="card">
             <div class="card-body">
                 <h3 class="header-title">All menus</h3>
+                <button type="button" class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#menu_form_add" title="Thêm">Add
+                </button>
+                <!-- Modal Form Add Start-->
+                @include('Menus.modal.form_add')
+	            <!-- Modal Form Add End-->
                 <form action="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    {{-- <h4 class="mt-0 header-title">Default Example</h4> --}}
-                                    <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
-                                        <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Link</th>
-                                            <th>Icon</th>
-                                            <th>Enabled</th>
-                                            <th>Created</th>
-                                            <th>Updated</th>
-                                        </tr>
-                                        </thead>
-
-
-                                        <tbody>
-                                        <tr>
-                                            <td>Home</td>
-                                            <td>http://happyfruits...</td>
-                                            <td>...</td>
-                                            <td>Hoạt động</td>
-                                            <td>2011/04/25</td>
-                                            <td>2022-02-22</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Home</td>
-                                            <td>http://happyfruits...</td>
-                                            <td>...</td>
-                                            <td>Hoạt động</td>
-                                            <td>2011/04/25</td>
-                                            <td>2022-02-22</td>
-                                        </tr> <tr>
-                                            <td>Home</td>
-                                            <td>http://happyfruits...</td>
-                                            <td>...</td>
-                                            <td>Hoạt động</td>
-                                            <td>2011/04/25</td>
-                                            <td>2022-02-22</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <table id="datatable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Link</th>
+                                <th>Icon</th>
+                                <th>Enabled</th>
+                                {{-- <th>Created</th>
+                                <th>Updated</th> --}}
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($list as $data)
+                                <tr>
+                                    <td>{{ $data->id }}</td>
+                                    <td>{{ $data->name }}</td>
+                                    <td>{{ $data->link_href }}</td>
+                                    <td>{{ $data->icon }}</td>
+                                    <td>{{ $data->enabled }}</td>
+                                    {{-- <td>{{ $data->created_at }}</td>
+                                    <td>{{ $data->updated_at }}</td> --}}
+                                    <td>  <a type="button" class="btn btn-warning m-2"  title="Show">
+                                                <i class="fa fa-th"></i>
+                                            </a>
+                                        <form action="{{ route('destroy_menus',['id'=>$data->id]) }} " method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                          
+                                             <button type="submit" class="btn btn-danger"  title="Xóa">
+                                                <i class="fa fa-times-circle"></i>
+                                            </button>
+                                        </form>
+                                            
+                                    </tr>
+                            @endforeach
+                        </tbody>
+                    </table>                                
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- Form add !-->
-        @include('Menus.partials.form_add')
-    <!--end form add !-->
+    <!-- Form Menu Structure !-->
+        @include('Menus.partials.form_menu_structure')
+    <!--end form Menu Structure !-->
 </div>
 <!-- end list menus !-->

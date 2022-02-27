@@ -7,10 +7,10 @@
         @include('Menus.partials.categories')
         <!-- end of category !-->
 
-        <!-- List and form add !-->
+        <!-- Form List  !-->
         @include('Menus.partials.list')
-        <!-- end of list and form add !-->
-
+        <!-- end of Form list !-->
+        {{-- @include('Menus.partials.form_menu_structure') --}}
     </div>
 </div>
 @endsection
