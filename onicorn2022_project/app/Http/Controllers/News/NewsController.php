@@ -118,28 +118,23 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {   
-        // $request->validate([
-        //     'title' => 'required',
-        //     'description' => 'required',
-        // ]);
-
-        // $post->update($request->all());
-
-        // return redirect()->route('posts.index')->with('success','Post updated successfully');
+    public function update(Request $request, $id, News $news)
+    {   var_dump($request);
+        die();
         //
         $all_validate = FacadesValidator::make($request->all(), [
             'title' => 'required|',
+            'photo-sub' =>'required',
             'author_name' => 'required|max:200',
             'content' => 'required',
+            'enabled',
+            'featured',
+            'deleted',
         ]);
         if ($all_validate->fails()) {
             toastr()->error('Failed');
             return back()->withErrors($all_validate)->withInput();
-        }
-
-        $title = $request->input('title');
+        }   
         //upload hình ảnh
         $photo_sub = "";
         $photo_sub_fileUpload = "";
@@ -148,20 +143,7 @@ class NewsController extends Controller
             $photo_sub_fileName = $photo_sub_fileUpload->getClientOriginalName();
             $photo_sub = time() . "-" . $photo_sub_fileName;
         }
-        $author_name = $request->input('author_name');
-        $content = $request->input('content');
-        $enabled = $request->input('enabled');
-        $featured = $request->input('featured');
-        $deleted = $request->input('deleted');
-        $news = News::create([
-            'title' => $title,
-            'photo_sub' => $photo_sub,
-            'author_name' => $author_name,
-            'content' => $content,
-            'enabled' => $enabled,
-            'feattured' => $featured,
-            'deleted' => $deleted,
-        ]);
+        $news->update($request->all());
         //Hãy chỉnh cấu hình ví dụ để folder ở chỗ khác thì sẽ tự dộng move theo đường dẫn
         if ($request->hasFile('photo_sub_fileUpload')) {
             $photo_sub_fileUpload->move(public_path('uploads'), $photo_sub);

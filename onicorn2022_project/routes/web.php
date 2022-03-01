@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Head\HeadController;
 use App\Http\Controllers\Menus\MenusController;
 use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,9 @@ Route::post('/admin-news-add', [NewsController::class, 'store'])->name('add_new'
 Route::get('/admin-news-update/{id}', [NewsController::class, 'edit'])->name('edit_new');
 Route::post('/admin-news-update/{id}', [NewsController::class, 'update'])->name('update_new');
 Route::delete('/admin-news-destroy/{id}', [NewsController::class, 'destroy'])->name('destroy_new');
+
+
+//Slide
+Route::get('/admin-head', [HeadController::class, 'index'])->name('admin_head');
+Route::post('/admin-head-add', [HeadController::class, 'store'])->name('add_head');
+Route::delete('/admin-head-destroy/{id}', [HeadController::class, 'destroy'])->name('destroy_head');

@@ -131,6 +131,21 @@
                     </div>
                 </li>
 
+                <li>
+                    <a href="#head" data-bs-toggle="collapse">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span> Head </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="head">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="/admin-head">List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </div>
