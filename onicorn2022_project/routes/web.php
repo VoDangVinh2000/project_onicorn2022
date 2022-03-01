@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Banner\BannerController;
 use App\Http\Controllers\Head\HeadController;
 use App\Http\Controllers\Menus\MenusController;
 use App\Http\Controllers\News\NewsController;
@@ -41,7 +42,13 @@ Route::post('/admin-news-update/{id}', [NewsController::class, 'update'])->name(
 Route::delete('/admin-news-destroy/{id}', [NewsController::class, 'destroy'])->name('destroy_new');
 
 
-//Slide
+//Head
 Route::get('/admin-head', [HeadController::class, 'index'])->name('admin_head');
 Route::post('/admin-head-add', [HeadController::class, 'store'])->name('add_head');
 Route::delete('/admin-head-destroy/{id}', [HeadController::class, 'destroy'])->name('destroy_head');
+
+
+//Banner
+Route::get('/admin-banner', [BannerController::class, 'index'])->name('admin_banner');
+Route::post('/admin-banner-add', [BannerController::class, 'store'])->name('add_banner');
+Route::delete('/admin-banner-destroy/{id}', [BannerController::class, 'destroy'])->name('destroy_banner');

@@ -98,18 +98,6 @@
                             <li>
                                 <a href="/admin-news">List</a>
                             </li>
-                            <li>
-                                <a href="email-templates.html">Footer</a>
-                            </li>
-                            <li>
-                                <a href="email-templates.html">Multi_Level_MenuHeader</a>
-                            </li>
-                            <li>
-                                <a href="email-templates.html">Social_Footer</a>
-                            </li>
-                            <li>
-                                <a href="email-templates.html">SubMenu_Header</a>
-                            </li>
                         </ul>
                     </div>
                 </li>
@@ -141,6 +129,21 @@
                         <ul class="nav-second-level">
                             <li>
                                 <a href="/admin-head">List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#banner" data-bs-toggle="collapse">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span> Banner </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="banner">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="/admin-banner">List</a>
                             </li>
                         </ul>
                     </div>
