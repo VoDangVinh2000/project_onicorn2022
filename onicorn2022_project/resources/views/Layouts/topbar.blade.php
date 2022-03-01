@@ -243,7 +243,7 @@
         </li>
 
         <li>
-            <h4 class="page-title-main">Dashboard</h4>
+            <h4 class="page-title-main">@yield('title')</h4>
         </li>
 
     </ul>

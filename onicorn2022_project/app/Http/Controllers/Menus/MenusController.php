@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Menus\Menus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator as FacadesValidator;
 use Illuminate\View\View;
 
 class MenusController extends Controller
@@ -25,6 +24,7 @@ class MenusController extends Controller
     {
         $list = Menus::all();
         return view('Menus.index', compact('list', $list));
+
     }
 
     /**
@@ -45,40 +45,40 @@ class MenusController extends Controller
      */
     public function store(Request $request)
     {
-        $all_validate = FacadesValidator::make($request->all(), [
-            'name' => 'required|max:200',
-            'link' => 'max:100|nullable',
-            'icon_fileUpload' => 'max:100',
-        ]);
-        if ($all_validate->fails()) {
-            toastr()->error('Failed');
-            return back()->withErrors($all_validate)->withInput();
-        }
+        // $all_validate = FacadesValidator::make($request->all(), [
+        //     'name' => 'required|max:200',
+        //     'link' => 'max:100|nullable',
+        //     'icon_fileUpload' => 'max:100',
+        // ]);
+        // if ($all_validate->fails()) {
+        //     toastr()->error('Failed');
+        //     return back()->withErrors($all_validate)->withInput();
+        // }
 
-        $name = $request->input('name');
-        $link = $request->input('link');
-        $icon = "";
-        $icon_fileUpload = "";
-        if ($request->hasFile('icon_fileUpload')) {
-            $icon_fileUpload = $request->file('icon_fileUpload');
-            $icon_fileName = $icon_fileUpload->getClientOriginalName();
-            $icon = time() . "-" . $icon_fileName;
-        }
+        // $name = $request->input('name');
+        // $link = $request->input('link');
+        // $icon = "";
+        // $icon_fileUpload = "";
+        // if ($request->hasFile('icon_fileUpload')) {
+        //     $icon_fileUpload = $request->file('icon_fileUpload');
+        //     $icon_fileName = $icon_fileUpload->getClientOriginalName();
+        //     $icon = time() . "-" . $icon_fileName;
+        // }
 
-        $enabled = $request->input('enabled');
-        $menus = Menus::create([
-            'name' => $name,
-            'link_href' => $link,
-            'icon' => $icon,
-            'enabled' => $enabled,
-        ]);
-        //Hãy chỉnh cấu hình ví dụ để folder ở chỗ khác thì sẽ tự dộng move theo đường dẫn
-        if ($request->hasFile('icon_fileUpload')) {
-            $icon_fileUpload->move(public_path('uploads'), $icon);
-        }
-        toastr()->success('Menu is added');
+        // $enabled = $request->input('enabled');
+        // $menus = Menus::create([
+        //     'name' => $name,
+        //     'link_href' => $link,
+        //     'icon' => $icon,
+        //     'enabled' => $enabled,
+        // ]);
+        // //Hãy chỉnh cấu hình ví dụ để folder ở chỗ khác thì sẽ tự dộng move theo đường dẫn
+        // if ($request->hasFile('icon_fileUpload')) {
+        //     $icon_fileUpload->move(public_path('uploads'), $icon);
+        // }
+        // toastr()->success('Menu is added');
 
-        return back()->with('message', 'Menu is added');
+        // return back()->with('message', 'Menu is added');
     }
 
     /**
@@ -90,11 +90,6 @@ class MenusController extends Controller
     public function show(Request $request)
     {
         //
-        // $list = $request->all();
-        // Menus::create($list);
-        // $menu = Menus::orderBy('di', 'DESC')->first();
-        // return redirect("admin-menus?id=$menu->id")->back()->with('success', 'menu successfully');
-
     }
 
     /**
@@ -107,9 +102,7 @@ class MenusController extends Controller
     {
         //
         $menu = Menus::find($id);
-        return response()->json([
-            'data' => $menu,
-        ]);
+        return view('Menus.partials.edit.form_edit_menu', compact('menu', $menu));
 
     }
 
@@ -148,4 +141,5 @@ class MenusController extends Controller
         $list = Menus::all();
         $view->with('index', $list);
     }
+ 
 }

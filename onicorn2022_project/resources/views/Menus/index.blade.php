@@ -4,7 +4,7 @@
 <div class="content-page">
     <div class="content">
         <!-- category !-->
-        @include('Menus.partials.categories')
+        {{-- @include('Menus.partials.categories') --}}
         <!-- end of category !-->
 
         <!-- Form List  !-->

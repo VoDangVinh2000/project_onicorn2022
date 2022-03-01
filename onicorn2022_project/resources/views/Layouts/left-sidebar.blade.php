@@ -96,7 +96,7 @@
                     <div class="collapse" id="news">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="email-inbox.html">Header</a>
+                                <a href="/admin-news">List</a>
                             </li>
                             <li>
                                 <a href="email-templates.html">Footer</a>

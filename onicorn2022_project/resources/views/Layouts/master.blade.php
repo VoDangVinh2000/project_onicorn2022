@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/icons.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+
     @toastr_css
 
 
