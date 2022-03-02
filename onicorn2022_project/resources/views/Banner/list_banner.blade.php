@@ -15,6 +15,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Title</th>
+                                <th>Page</th>
                                 <th>Sub_Title</th>
                                 <th>Photo</th>                          
                                 <th>Enabled</th>
@@ -29,6 +30,7 @@
                                 <tr>
                                     <td>{{ $data->id }}</td>
                                     <td>{{ $data->title }}</td>
+                                    <td>{{ $data->page_id }}</td>
                                     <td>{{ $data->subtitle }}</td>
                                     <td>{{ $data->photo }}</td>                               
                                     <td>{{ $data->enabled }}</td>

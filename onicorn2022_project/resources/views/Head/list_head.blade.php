@@ -14,6 +14,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Page</th>
                                 <th>Title</th>
                                 <th>Content</th>
                                 <th>Enabled</th>
@@ -26,6 +27,7 @@
                             @foreach ($list as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
+                                    <td>{{ $data->page_id }}</td>
                                     <td>{{ $data->title }}</td>    
                                     <td>{{ $data->content }}</td>
                                     <td>{{ $data->enabled }}</td>

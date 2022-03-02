@@ -12,6 +12,6 @@ class Banner extends Model
     protected $primaryKey = "id";
     public $timestamps = true;
     protected $fillable = [
-        'id', 'title', 'subtitle','photo' ,'enabled', 'created_at', 'updated_at',
+        'id', 'title','page_id' ,'subtitle','photo' ,'enabled', 'created_at', 'updated_at',
     ];
 }

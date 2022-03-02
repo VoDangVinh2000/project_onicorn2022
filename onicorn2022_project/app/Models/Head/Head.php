@@ -12,6 +12,6 @@ class Head extends Model
     protected $primaryKey = "id";
     public $timestamps = true;
     protected $fillable = [
-        'id', 'title', 'content', 'enabled', 'created_at', 'update_at',
+        'id','page_id' ,'title', 'content', 'enabled', 'created_at', 'update_at',
     ];
 }
