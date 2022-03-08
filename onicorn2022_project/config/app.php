@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Console\Kernel;
 return [
 
     /*
@@ -26,7 +28,7 @@ return [
     |
      */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => 'APP_ENV',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,10 +54,10 @@ return [
     |
      */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => 'http://localhost',
 
-    'asset_url' => env('ASSET_URL', null),
-
+    // 'asset_url' => env('ASSET_URL', null),
+    'folder_upload_url' => 'uploads/',
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -119,7 +121,7 @@ return [
     |
      */
 
-    'key' => env('APP_KEY'),
+    'key' => 'base64:X17KLAE/I+1+XwXQLYlLzmcgL586akzEpmMl8ROJkK0=',
 
     'cipher' => 'AES-256-CBC',
 
@@ -175,7 +177,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
-
     ],
 
     /*

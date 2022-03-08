@@ -3,7 +3,7 @@
     <div class="h-100" data-simplebar>
         <!-- User box -->
         <div class="user-box text-center">
-            <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
+            <img src="{{asset('assets/images/users/user-1.jpg')}}" alt="user-img" title="Mat Helme"
                 class="rounded-circle img-thumbnail avatar-md">
             <div class="dropdown">
                 <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"
@@ -79,10 +79,7 @@
                     <div class="collapse" id="page">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">About us</a>
+                                <a href="{{route('admin_page_list')}}">List</a>
                             </li>
                         </ul>
                     </div>

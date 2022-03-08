@@ -10,7 +10,7 @@ class Menus extends Model
     use HasFactory;
     protected $table = "la_menus";
     protected $primaryKey = "id";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'id', 'name', 'link_href', 'icon', 'enabled', 'created_at', 'update_at',
     ];
