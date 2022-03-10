@@ -85,6 +85,20 @@
                     </div>
                 </li>
                 <li>
+                    <a href="#banner" data-bs-toggle="collapse">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span> Banner </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="banner">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="/admin-banner">List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
                     <a href="#news" data-bs-toggle="collapse">
                         <i class="fa fa-newspaper-o"></i>
                         <span> News </span>
@@ -131,20 +145,6 @@
                     </div>
                 </li>
 
-                <li>
-                    <a href="#banner" data-bs-toggle="collapse">
-                        <i class="fa fa-pencil-square-o"></i>
-                        <span> Banner </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="banner">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="/admin-banner">List</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
 
             </ul>
         </div>
