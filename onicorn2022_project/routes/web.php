@@ -68,5 +68,3 @@ Route::delete('/admin-head-destroy/{id}', [HeadController::class, 'destroy'])->n
 Route::get('/admin-banner', [BannerController::class, 'index'])->name('admin_banner');
 Route::post('/admin-banner-add', [BannerController::class, 'store'])->name('add_banner');
 Route::delete('/admin-banner-destroy/{id}', [BannerController::class, 'destroy'])->name('destroy_banner');
-
-//menus
