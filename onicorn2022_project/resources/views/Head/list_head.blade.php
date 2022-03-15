@@ -34,14 +34,7 @@
                                     
                                     <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->updated_at }}</td>
-                                    <td> 
-                                        <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#" title="Update">
-                                            <i class="fa fa-pencil-square-o"></i>
-                                        </button>    
-                                        {{-- Form Update --}}
-                                        {{-- @include('News.modal.form_update') --}}
-                                        {{-- End form update --}}
-                                    </td>     
+                                   
                                     <td>
                                         <form action="{{ route('destroy_head',['id'=>$data->id]) }} " method="POST">   
                                             @csrf

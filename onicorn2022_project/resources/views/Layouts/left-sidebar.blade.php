@@ -112,7 +112,7 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#layouts" data-bs-toggle="collapse">
                         <i class="fa fa-pencil-square-o"></i>
                         <span> Layouts </span>
@@ -128,7 +128,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 <li>
                     <a href="#head" data-bs-toggle="collapse">

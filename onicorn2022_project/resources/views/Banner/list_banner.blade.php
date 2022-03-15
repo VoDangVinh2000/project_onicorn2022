@@ -36,14 +36,7 @@
                                     <td>{{ $data->enabled }}</td>
                                     <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->updated_at }}</td>
-                                    <td> 
-                                        <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#banner_form_update" title="Update">
-                                            <i class="fa fa-pencil-square-o"></i>
-                                        </button>    
-                                        {{-- Form Update --}}
-                                        {{-- @include('Banner.modal.form_update') --}}
-                                        {{-- End form update --}}
-                                    </td>     
+                                  
                                     <td>
                                         <form action="{{ route('destroy_banner',['id'=>$data->id]) }} " method="POST">   
                                             @csrf
